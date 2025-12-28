@@ -1,0 +1,15 @@
+# LSTM model configuration
+model:
+  type: "lstm"
+  input_size: 1
+  output_size: 1
+  hidden_size: 64
+  num_layers: 2
+  dropout: 0.2
+  bidirectional: false
+
+training:
+  learning_rate: 0.001
+  weight_decay: 1e-5
+  max_epochs: 100
+  patience: 10

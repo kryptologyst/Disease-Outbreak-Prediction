@@ -1,0 +1,63 @@
+# Default configuration for disease outbreak prediction
+
+# Data configuration
+data:
+  seq_len: 10
+  pred_len: 1
+  normalize: true
+  normalization_method: "minmax"
+  train_ratio: 0.7
+  val_ratio: 0.15
+  test_ratio: 0.15
+  batch_size: 32
+  shuffle: true
+  num_workers: 0
+  pin_memory: true
+
+# Model configuration
+model:
+  type: "lstm"
+  input_size: 1
+  output_size: 1
+  hidden_size: 64
+  num_layers: 2
+  dropout: 0.2
+  bidirectional: false
+
+# Training configuration
+training:
+  learning_rate: 0.001
+  weight_decay: 1e-5
+  max_epochs: 100
+  patience: 10
+  min_delta: 0.001
+  gradient_clip_norm: 1.0
+
+# Evaluation configuration
+evaluation:
+  metrics: ["mae", "mse", "rmse", "mape", "smape", "r2", "directional_accuracy"]
+  uncertainty_samples: 100
+  confidence_level: 0.95
+
+# Explainability configuration
+explainability:
+  methods: ["integrated_gradients", "saliency"]
+  n_explanations: 5
+  attribution_steps: 50
+
+# Logging configuration
+logging:
+  level: "INFO"
+  log_file: null
+  use_wandb: false
+  wandb_project: "disease-outbreak-prediction"
+
+# Device configuration
+device:
+  auto_detect: true
+  force_cpu: false
+  force_cuda: false
+  force_mps: false
+
+# Random seed
+seed: 42
